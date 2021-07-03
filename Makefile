@@ -6,7 +6,7 @@
 #    By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 07:58:14 by abahdir           #+#    #+#              #
-#    Updated: 2021/06/29 10:18:08 by abahdir          ###   ########.fr        #
+#    Updated: 2021/07/03 19:56:53 by abahdir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,5 +24,5 @@ clean :
 fclean :
 	@rm -rf philosophers
 run :
-	clear ; make re ; ./philosophers
+	clear ; make re ; ./philosophers 5 800 200 200 7
 re : fclean all	
