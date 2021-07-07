@@ -19,21 +19,22 @@
 
 typedef struct s_args 
 {
-	size_t	nb_philos;
-	size_t	nb_forks;
-	size_t	tt_die;
-	size_t	tt_eat;
-	size_t	tt_sleep;
-	size_t	nb_eat;
+	pthread_mutex_t	*forks;
+	size_t			nb_philos;
+	size_t			nb_forks;
+	size_t			tt_die;
+	size_t			tt_eat;
+	size_t			tt_sleep;
+	size_t			nb_eat;
 } t_args;
 
 typedef struct s_philo
 {
-	pthread_t		id;
-	pthread_mutex_t	fork;
-	size_t			nb_eat;
-	size_t			last_eat;
-	t_args			*arg;
+	size_t		id;
+	pthread_t	th;
+	size_t		nb_eat;
+	size_t		last_eat;
+	t_args		*more;
 } t_philo;
 
 
