@@ -42,5 +42,6 @@ short	check_errors(char	**inputs);
 int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
 void	set_args(int argc, char **argv, t_args **args);
+void	*philo_life(void *arg);
 
 #endif

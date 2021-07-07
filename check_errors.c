@@ -39,3 +39,22 @@ short	check_errors(char	**inputs)
 	}
 	return (1);
 }
+
+void	set_args(int argc, char **argv, t_args **args)
+{
+	int i;
+
+	(*args)->nb_philos = ft_atoi(argv[1]);
+	(*args)->nb_forks = ft_atoi(argv[1]);
+	(*args)->tt_die = ft_atoi(argv[2]);
+	(*args)->tt_eat = ft_atoi(argv[3]);
+	(*args)->tt_sleep = ft_atoi(argv[4]);
+	if (argc == 6)
+		(*args)->nb_eat = ft_atoi(argv[5]);
+	else
+		(*args)->nb_eat = 0;
+	(*args)->forks = malloc((*args)->nb_forks * sizeof(pthread_mutex_t));
+	i = -1;
+	while (++i < (*args)->nb_philos)
+		pthread_mutex_init(&(*args)->forks[i], NULL);
+}
