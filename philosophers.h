@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 08:02:23 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/03 19:44:50 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:51:24 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ typedef struct s_philo
 short	check_errors(char	**inputs);
 int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
+void	ft_putnbr(int n);
+void	ft_putstr(char *s);
 void	set_args(int argc, char **argv, t_args **args);
 void	*philo_life(void *arg);
+void	fork_taken(t_philo *philo);
+void	eating(t_philo *philo);
+void	thinking(t_philo *philo);
 
 #endif

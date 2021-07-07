@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:14:27 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/07 16:24:06 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:49:23 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 void	fork_taken(t_philo *philo)
 {
-	write(STDOUT_FILENO, "has taken a fork\n", 17);
+	ft_putstr("has taken a fork\n");
 }
 
 void	eating(t_philo *philo)
 {
-	write(STDOUT_FILENO, "eating\n", 7);
+	ft_putstr("\033[0;32meating\033[0m\n");
+	ft_putstr("has taken a fork\n");
 }
 
 void	thinking(t_philo *philo)
 {
-	write(STDOUT_FILENO, "thinking\n", 9);
+	ft_putstr("thinking\n");
 }
 
 void	sleeping(t_philo *philo)
 {
-	write(STDOUT_FILENO, "sleeping\n", 9);
+	ft_putstr("sleeping\n");
 }
 
 void	died(t_philo *philo)
 {
-	write(STDOUT_FILENO, "died\n", 5);
+	ft_putstr("died\n");
 }
 
 void	*philo_life(void *arg)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 18:13:05 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/03 19:27:48 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:45:48 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,36 @@ int	ft_atoi(const char *str)
 		|| (result > 2147483647 && sign == 1))
 		exit(write(STDOUT_FILENO, "Inputs is too long!\n", 20));
 	return (result * sign);
+}
+
+void	ft_putnbr(int n)
+{
+	int		sign;
+	char	c;
+	long	nn;
+
+	sign = 1;
+	nn = n;
+	if (nn < 0)
+	{
+		sign = -1;
+		nn *= sign;
+		write(STDOUT_FILENO, "-", 1);
+	}
+	if (nn >= 10)
+	{
+		ft_putnbr(nn / 10);
+		ft_putnbr(nn % 10);
+	}
+	else
+	{
+		c = nn % 10 + 48;
+		write(STDOUT_FILENO, &c, 1);
+	}
+}
+
+void	ft_putstr(char *s)
+{
+	if (s != NULL)
+		write(STDOUT_FILENO, s, ft_strlen(s));
 }
