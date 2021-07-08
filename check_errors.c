@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 18:28:43 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/03 19:38:45 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/08 11:33:45 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void	set_args(int argc, char **argv, t_args **args)
 	i = -1;
 	while (++i < (*args)->nb_philos)
 		pthread_mutex_init(&(*args)->forks[i], NULL);
+	pthread_mutex_init(&(*args)->w_protect, NULL);
 }

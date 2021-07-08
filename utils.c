@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 18:13:05 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/07 16:45:48 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/08 17:49:05 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int n, char *color)
 {
 	int		sign;
 	char	c;
 	long	nn;
 
+	if (color != NULL)
+		write(STDOUT_FILENO, color, ft_strlen(color));
 	sign = 1;
 	nn = n;
 	if (nn < 0)
@@ -66,18 +68,22 @@ void	ft_putnbr(int n)
 	}
 	if (nn >= 10)
 	{
-		ft_putnbr(nn / 10);
-		ft_putnbr(nn % 10);
+		ft_putnbr(nn / 10, NULL);
+		ft_putnbr(nn % 10, NULL);
 	}
 	else
 	{
 		c = nn % 10 + 48;
 		write(STDOUT_FILENO, &c, 1);
 	}
+	write(STDOUT_FILENO, "\033[1;m", ft_strlen("\033[1;m"));
 }
 
-void	ft_putstr(char *s)
+void	ft_putstr(char *s, char *color)
 {
+	if (color != NULL)
+		write(STDOUT_FILENO, color, ft_strlen(color));
 	if (s != NULL)
 		write(STDOUT_FILENO, s, ft_strlen(s));
+	write(STDOUT_FILENO, "\033[1;m", ft_strlen("\033[1;m"));
 }
