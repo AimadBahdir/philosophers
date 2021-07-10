@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:57:16 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/08 17:55:50 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 11:34:15 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,32 @@
 void	ft_creat_philo(t_philo *philos, int index, t_args *args)
 {
 	philos[index].id = index + 1;
-	philos[index].nb_eat = 10 / (index+1);
-	philos[index].last_eat = 0;
+	philos[index].nb_eat = 0;
+	philos[index].last_eat = get_time();
 	philos[index].more = args;
-	pthread_create(&philos[index].th, NULL, &philo_life, &philos[index]);
+	if (pthread_create(&philos[index].th, NULL, &philo_life, &philos[index]) != 0)
+		exit(1);
 }
 
 void	ft_run(t_philo *philos, t_args *args)
 {
 	int		i;
 
-	i = -1;
-	while (++i < args->nb_philos)
-		if (i % 2 == 0)
+	i = 0;
+	while (i < args->nb_philos)
+	{
+		// if (i % 2 == 0)
 			ft_creat_philo(philos, i, args);
+		i +=2;
+	}
 	usleep(1000);
-	i = -1;
-	while (++i < args->nb_philos)
-		if (i % 2 == 1)
+	i = 1;
+	while (i < args->nb_philos)
+	{
+		// if (i % 2 == 0)
 			ft_creat_philo(philos, i, args);
+		i +=2;
+	}
 	i = -1;
 	while (++i < args->nb_philos)
 		pthread_join(philos[i].th, NULL);

@@ -6,63 +6,47 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 18:31:20 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/08 17:47:25 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 13:11:04 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	fork_taken(t_philo *philo)
+void	ft_pause(int time)
 {
-	pthread_mutex_lock(&philo->more->w_protect);
-	gettimeofday(&philo->more->time, NULL);
-	ft_putnbr(philo->more->time.tv_usec * 1000, "\033[1;m");
-	ft_putstr(" ", NULL);
-	ft_putnbr(philo->id, "\033[1;m");
-	ft_putstr(" has taken a fork\n", "\033[1;32m");
-	pthread_mutex_unlock(&philo->more->w_protect);
+	usleep(time);
 }
 
-void	eating(t_philo *philo)
+long	get_time(void)
 {
-	pthread_mutex_lock(&philo->more->w_protect);
-	gettimeofday(&philo->more->time, NULL);
-	ft_putnbr(philo->more->time.tv_usec * 1000, "\033[1;m");
-	ft_putstr(" ", NULL);
-	ft_putnbr(philo->id, "\033[1;m");
-	ft_putstr(" is eating\n", "\033[1;32m");
-	usleep(philo->more->tt_eat * 1000);
-	philo->nb_eat++;
-	pthread_mutex_unlock(&philo->more->w_protect);
+	struct timeval time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	thinking(t_philo *philo)
+void	ft_do(short stat, t_philo *philo)
 {
-	pthread_mutex_lock(&philo->more->w_protect);
-	ft_putnbr(philo->more->time.tv_usec * 1000, "\033[1;m");
-	ft_putstr(" ", NULL);
-	ft_putnbr(philo->id, "\033[1;m");
-	ft_putstr(" is thinking\n", "\033[1;33m");
-	pthread_mutex_unlock(&philo->more->w_protect);
-}
-
-void	sleeping(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->more->w_protect);
-	ft_putnbr(philo->more->time.tv_usec * 1000, "\033[1;m");
-	ft_putstr(" ", NULL);
-	ft_putnbr(philo->id, "\033[1;m");
-	ft_putstr(" is sleeping\n", "\033[1;34m");
-	usleep(philo->more->tt_sleep * 1000);
-	pthread_mutex_unlock(&philo->more->w_protect);
-}
-
-void	died(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->more->w_protect);
-	ft_putnbr(philo->more->time.tv_usec * 1000, "\033[1;m");
-	ft_putstr(" ", NULL);
-	ft_putnbr(philo->id, "\033[1;m");
-	ft_putstr(" died\n", "\033[1;31m");
-	pthread_mutex_unlock(&philo->more->w_protect);
+	ft_putstr("\x1B[0m");
+	ft_putnbr(get_time());
+	ft_putstr(" ");
+	ft_putnbr(philo->id);
+	pthread_mutex_lock(&philo->more->print);
+	if (stat == 1)
+		ft_putstr("\x1B[31mis has taken a fork\n\x1B[0m");
+	else if (stat == 2)
+	{
+		philo->last_eat = get_time();
+		ft_putstr("\x1B[32mis is eating\n\x1B[0m");
+		philo->nb_eat++;
+		ft_pause(philo->more->tt_eat);
+	}
+	else if (stat == 3)
+		ft_putstr("\x1B[33mis is thinking\n\x1B[0m");
+	else if (stat == 4)
+	{
+		ft_putstr("\x1B[34mis is sleeping\n\x1B[0m");
+		ft_pause(philo->more->tt_sleep);
+	}
+	pthread_mutex_unlock(&philo->more->print);
 }
