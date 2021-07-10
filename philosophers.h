@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 08:02:23 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 15:31:53 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 17:36:05 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_args
 	size_t			tt_eat;
 	size_t			tt_sleep;
 	size_t			nb_eat;
+	size_t			all_eat;
 	long			time_start;
 } t_args;
 
@@ -53,7 +54,7 @@ void	*philo_life(void *arg);
 void	ft_sleeping(t_philo *philo);
 void	ft_eating(t_philo *philo);
 void	ft_print_stat(short stat, t_philo *philo);
-void	*calc_tt_die(void *arg);
+void	ft_check_die(t_philo *philos, t_args *args);
 long	get_time(void);
 void	ft_pause(size_t time);
 void	ft_died(t_philo *philo);

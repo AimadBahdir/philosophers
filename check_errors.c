@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 18:28:43 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 14:47:43 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 17:37:02 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	set_args(int argc, char **argv, t_args **args)
 	(*args)->tt_die = ft_atoi(argv[2]);
 	(*args)->tt_eat = ft_atoi(argv[3]);
 	(*args)->tt_sleep = ft_atoi(argv[4]);
+	(*args)->all_eat = 0;
 	if (argc == 6)
 		(*args)->nb_eat = ft_atoi(argv[5]);
 	else
