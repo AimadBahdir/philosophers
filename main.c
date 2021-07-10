@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:57:16 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 11:34:15 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 13:24:44 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,14 @@ void	ft_run(t_philo *philos, t_args *args)
 	i = 0;
 	while (i < args->nb_philos)
 	{
-		// if (i % 2 == 0)
-			ft_creat_philo(philos, i, args);
+		ft_creat_philo(philos, i, args);
 		i +=2;
 	}
 	usleep(1000);
 	i = 1;
 	while (i < args->nb_philos)
 	{
-		// if (i % 2 == 0)
-			ft_creat_philo(philos, i, args);
+		ft_creat_philo(philos, i, args);
 		i +=2;
 	}
 	i = -1;

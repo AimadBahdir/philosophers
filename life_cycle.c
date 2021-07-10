@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:14:27 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 13:13:30 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 13:31:14 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,15 @@ void	*philo_life(void *arg)
 	while (1)
 	{
 		pthread_mutex_lock(&philo->more->forks[lf]);
-		ft_do(1, philo);
+		// ft_do(1, philo);
 		pthread_mutex_lock(&philo->more->forks[rf]);
-		ft_do(1, philo);
-		ft_do(2, philo);
+		printf(">>> %d\n", philo->id);
+		// ft_do(1, philo);
+		// ft_do(2, philo);
 		pthread_mutex_unlock(&philo->more->forks[lf]);
 		pthread_mutex_unlock(&philo->more->forks[rf]);
-		ft_do(4, philo);
-		ft_do(3, philo);
+		// ft_do(4, philo);
+		// ft_do(3, philo);
 	}
 	
 	return (philo);
