@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:50:57 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 19:33:02 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 20:05:11 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_pause(size_t time)
 	size_t	time_now;
 
 	time_now = get_time();
-	usleep((time * 1000) - 2000);
+	usleep((time * 1000) - 20000);
 	while (get_time() - time_now < time)
 		continue ;
 }
