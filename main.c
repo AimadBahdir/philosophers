@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:57:16 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 19:30:09 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:35:32 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ short	ft_creat_philo(t_philo *philos, int index, t_args *args)
 	philos[index].last_eat = get_time();
 	philos[index].eating = 0;
 	philos[index].more = args;
-	if (pthread_create(&philos[index].th, NULL, &philo_life, &philos[index]) != 0)
+	if (pthread_create(&philos[index].th, NULL,
+			&philo_life, &philos[index]) != 0)
 		return (ft_puterror("can't creat a thread!"));
 	return (0);
 }
@@ -36,11 +37,11 @@ short	ft_check_die(t_philo *philos, t_args *args)
 		{
 			tt_die = get_time() - philos[i].last_eat;
 			if (tt_die > (int)args->tt_die && !philos[i].eating)
-				return(ft_died(&philos[i]));
+				return (ft_died(&philos[i]));
 			i++;
 		}
 		if (args->nb_philos == args->all_eat)
-			return(1);
+			return (1);
 	}
 	return (0);
 }
@@ -67,7 +68,7 @@ short	ft_run(t_philo *philos, t_args *args)
 	return (ft_check_die(philos, args));
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_philo	*philos;
 	t_args	*args;
@@ -84,6 +85,6 @@ int main(int argc, char **argv)
 		return (ft_run(philos, args));
 	}
 	else
-		return(ft_puterror("Invalid inputs!"));
+		return (ft_puterror("Invalid inputs!"));
 	return (0);
 }

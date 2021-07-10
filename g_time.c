@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:50:57 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 19:26:59 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:33:02 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_pause(size_t time)
 {
-	size_t time_now;
+	size_t	time_now;
 
 	time_now = get_time();
 	usleep((time * 1000) - 2000);
@@ -24,7 +24,7 @@ void	ft_pause(size_t time)
 
 long	get_time(void)
 {
-	struct timeval time;
+	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));

@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:14:27 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 19:29:18 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:33:20 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ void	*philo_life(void *arg)
 		ft_sleeping(philo);
 		ft_print_stat(3, philo);
 	}
-	
 	return (philo);
 }

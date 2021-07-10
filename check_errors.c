@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 18:28:43 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 19:29:06 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:32:43 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ short	check_errors(char	**inputs)
 
 short	set_args(int argc, char **argv, t_args **args)
 {
-	int i;
+	int	i;
 
 	(*args)->nb_philos = ft_atoi(argv[1]);
 	(*args)->nb_forks = ft_atoi(argv[1]);

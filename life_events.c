@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 18:31:20 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 19:26:59 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:33:45 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void	ft_sleeping(t_philo *philo)
 short	ft_died(t_philo *philo)
 {
 	ft_print_stat(5, philo);
-	return(1);
+	return (1);
 }
