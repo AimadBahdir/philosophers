@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 18:28:43 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 13:08:19 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 14:47:43 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	set_args(int argc, char **argv, t_args **args)
 		(*args)->nb_eat = 0;
 	(*args)->forks = malloc((*args)->nb_forks * sizeof(pthread_mutex_t));
 	i = -1;
+	(*args)->time_start = get_time();
 	while (++i < (*args)->nb_philos)
 		pthread_mutex_init(&(*args)->forks[i], NULL);
 	pthread_mutex_init(&(*args)->print, NULL);

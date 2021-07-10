@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 08:02:23 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 13:11:27 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 15:31:53 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_philo
 	pthread_t	th;
 	size_t		nb_eat;
 	int			last_eat;
+	short		eating;
 	t_args		*more;
 } t_philo;
 
@@ -49,8 +50,12 @@ void	ft_putnbr(long n);
 void	ft_putstr(char *s);
 void	set_args(int argc, char **argv, t_args **args);
 void	*philo_life(void *arg);
-void	ft_do(short stat, t_philo *philo);
+void	ft_sleeping(t_philo *philo);
+void	ft_eating(t_philo *philo);
+void	ft_print_stat(short stat, t_philo *philo);
 void	*calc_tt_die(void *arg);
-long		get_time(void);
+long	get_time(void);
+void	ft_pause(size_t time);
+void	ft_died(t_philo *philo);
 
 #endif

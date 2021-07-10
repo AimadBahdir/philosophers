@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:57:16 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 13:24:44 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 15:32:36 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,27 @@ void	ft_creat_philo(t_philo *philos, int index, t_args *args)
 		exit(1);
 }
 
+void	ft_check_die(t_philo *philos)
+{
+	int	i;
+	int	tt_die;
+
+	while (1)
+	{
+		i = 0;
+		while (i < philos[i].more->nb_philos)
+		{
+			tt_die = get_time() - philos[i].last_eat;
+			if (tt_die > philos[i].more->tt_die)
+				ft_died(&philos[i]);
+			i++;
+		}
+	}
+}
+
 void	ft_run(t_philo *philos, t_args *args)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < args->nb_philos)
@@ -39,9 +57,7 @@ void	ft_run(t_philo *philos, t_args *args)
 		ft_creat_philo(philos, i, args);
 		i +=2;
 	}
-	i = -1;
-	while (++i < args->nb_philos)
-		pthread_join(philos[i].th, NULL);
+	ft_check_die(philos);
 }
 
 int main(int argc, char **argv)
