@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 08:02:23 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 17:36:05 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:26:27 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_H
+# define PHILO_H
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -49,14 +49,17 @@ int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
 void	ft_putnbr(long n);
 void	ft_putstr(char *s);
-void	set_args(int argc, char **argv, t_args **args);
+short	ft_puterror(char *err);
+short	set_args(int argc, char **argv, t_args **args);
+short	ft_creat_philo(t_philo *philos, int index, t_args *args);
+short	ft_run(t_philo *philos, t_args *args);
 void	*philo_life(void *arg);
 void	ft_sleeping(t_philo *philo);
 void	ft_eating(t_philo *philo);
 void	ft_print_stat(short stat, t_philo *philo);
-void	ft_check_die(t_philo *philos, t_args *args);
+short	ft_check_die(t_philo *philos, t_args *args);
 long	get_time(void);
 void	ft_pause(size_t time);
-void	ft_died(t_philo *philo);
+short	ft_died(t_philo *philo);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:50:57 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 15:04:56 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:26:59 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
 void	ft_pause(size_t time)
 {

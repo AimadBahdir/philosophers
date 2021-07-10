@@ -6,11 +6,11 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 18:31:20 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 17:39:11 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:26:59 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
 void	ft_print_stat(short stat, t_philo *philo)
 {
@@ -51,8 +51,8 @@ void	ft_sleeping(t_philo *philo)
 	ft_pause(philo->more->tt_sleep);
 }
 
-void	ft_died(t_philo *philo)
+short	ft_died(t_philo *philo)
 {
 	ft_print_stat(5, philo);
-	exit(0);
+	return(1);
 }

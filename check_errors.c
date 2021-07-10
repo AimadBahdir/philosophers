@@ -6,11 +6,11 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 18:28:43 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 17:37:02 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:29:06 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
 int	ft_strlen(char *str)
 {
@@ -20,6 +20,17 @@ int	ft_strlen(char *str)
 	while (str[len])
 		len++;
 	return (len);
+}
+
+short	ft_puterror(char *err)
+{
+	if (err)
+	{
+		write(STDERR_FILENO, "\x1b[31m ERROR: ", ft_strlen("\x1b[31m ERROR: "));
+		write(STDERR_FILENO, err, ft_strlen(err));
+		write(STDERR_FILENO, "\x1b[0m\n", ft_strlen("\x1b[0m\n"));
+	}
+	return (1);
 }
 
 short	check_errors(char	**inputs)
@@ -40,7 +51,7 @@ short	check_errors(char	**inputs)
 	return (1);
 }
 
-void	set_args(int argc, char **argv, t_args **args)
+short	set_args(int argc, char **argv, t_args **args)
 {
 	int i;
 
@@ -55,9 +66,14 @@ void	set_args(int argc, char **argv, t_args **args)
 	else
 		(*args)->nb_eat = 0;
 	(*args)->forks = malloc((*args)->nb_forks * sizeof(pthread_mutex_t));
+	if (!(*args)->forks)
+		return (ft_puterror("Bad allocation !"));
 	i = -1;
 	(*args)->time_start = get_time();
-	while (++i < (*args)->nb_philos)
-		pthread_mutex_init(&(*args)->forks[i], NULL);
-	pthread_mutex_init(&(*args)->print, NULL);
+	while (++i < (int)(*args)->nb_philos)
+		if (pthread_mutex_init(&(*args)->forks[i], NULL) != 0)
+			return (1);
+	if (pthread_mutex_init(&(*args)->print, NULL) != 0)
+		return (1);
+	return (0);
 }

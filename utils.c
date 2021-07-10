@@ -6,11 +6,11 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 18:13:05 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 12:50:57 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:26:59 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
 static int	getsign(const char *str, int *i)
 {
@@ -46,7 +46,7 @@ int	ft_atoi(const char *str)
 	}
 	if ((result > 2147483648 && sign == -1)
 		|| (result > 2147483647 && sign == 1))
-		exit(write(STDOUT_FILENO, "Inputs is too long!\n", 20));
+		return (ft_puterror("Inputs is too long!\n"));
 	return (result * sign);
 }
 

@@ -6,16 +6,15 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:14:27 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 15:30:41 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/10 19:29:18 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
 void	*philo_life(void *arg)
 {
 	t_philo		*philo;
-	pthread_t	calc;
 	int			rf;
 	int			lf;
 
