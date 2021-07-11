@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 18:28:43 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/10 19:32:43 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/11 11:01:08 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ short	set_args(int argc, char **argv, t_args **args)
 	(*args)->time_start = get_time();
 	while (++i < (int)(*args)->nb_philos)
 		if (pthread_mutex_init(&(*args)->forks[i], NULL) != 0)
-			return (1);
+			return (ft_puterror("can't init a mutex!"));
 	if (pthread_mutex_init(&(*args)->print, NULL) != 0)
-		return (1);
+		return (ft_puterror("can't init a mutex!"));
 	return (0);
 }

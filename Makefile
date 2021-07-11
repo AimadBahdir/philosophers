@@ -6,7 +6,7 @@
 #    By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 07:58:14 by abahdir           #+#    #+#              #
-#    Updated: 2021/07/10 19:28:20 by abahdir          ###   ########.fr        #
+#    Updated: 2021/07/11 10:55:45 by abahdir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ $(NAME) : $(SRC)
 clean :
 
 fclean :
-	@rm -rf philo
+	@rm -rf $(NAME)
 run :
-	clear ; make re ; ./philosophers 5 800 200 200
+	clear ; make re ; ./$(NAME) 5 800 200 200
 re : fclean all	
