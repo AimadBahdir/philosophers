@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 18:31:20 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/12 14:54:41 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/12 16:04:33 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_sleeping(t_philo *philo)
 
 short	ft_died(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->more->print);
 	ft_putstr("\x1B[0m");
 	ft_putnbr(get_time() - philo->more->time_start);
 	ft_putstr(" \x1b[37m[");
