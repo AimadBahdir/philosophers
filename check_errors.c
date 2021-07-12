@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 18:28:43 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/11 11:01:08 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/12 14:36:26 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ short	check_errors(char	**inputs)
 	return (1);
 }
 
+int	refree(t_philo *philos, t_args *args, int ret)
+{
+	pthread_mutex_lock(&(args)->free);
+	if (philos)
+		free (philos);
+	if (args)
+	{
+		free(args->forks);
+		free(args);
+	}
+	pthread_mutex_unlock(&(args)->free);
+	return (ret);
+}
+
 short	set_args(int argc, char **argv, t_args **args)
 {
 	int	i;
@@ -61,6 +75,7 @@ short	set_args(int argc, char **argv, t_args **args)
 	(*args)->tt_eat = ft_atoi(argv[3]);
 	(*args)->tt_sleep = ft_atoi(argv[4]);
 	(*args)->all_eat = 0;
+	(*args)->done = 0;
 	if (argc == 6)
 		(*args)->nb_eat = ft_atoi(argv[5]);
 	else
@@ -73,7 +88,8 @@ short	set_args(int argc, char **argv, t_args **args)
 	while (++i < (int)(*args)->nb_philos)
 		if (pthread_mutex_init(&(*args)->forks[i], NULL) != 0)
 			return (ft_puterror("can't init a mutex!"));
-	if (pthread_mutex_init(&(*args)->print, NULL) != 0)
+	if (pthread_mutex_init(&(*args)->print, NULL) != 0
+		|| pthread_mutex_init(&(*args)->free, NULL) != 0)
 		return (ft_puterror("can't init a mutex!"));
 	return (0);
 }
