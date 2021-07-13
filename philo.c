@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:57:16 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/12 15:08:57 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/13 13:53:36 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ short	ft_creat_philo(t_philo *philos, int index, t_args *args)
 {
 	philos[index].id = index + 1;
 	philos[index].nb_eat = 0;
-	philos[index].last_eat = get_time();
 	philos[index].lfork = 0;
 	philos[index].rfork = 0;
 	philos[index].more = args;
@@ -26,6 +25,7 @@ short	ft_creat_philo(t_philo *philos, int index, t_args *args)
 	if (pthread_create(&philos[index].th, NULL,
 			&philo_life, &philos[index]) != 0)
 		return (ft_puterror("can't creat a thread!"));
+	philos[index].last_eat = get_time();
 	return (0);
 }
 
@@ -65,10 +65,14 @@ short	ft_check_die(t_philo *philos, t_args *args)
 					return (ft_died(&philos[i]));
 				pthread_mutex_unlock(&philos[i].eating);
 			}
+			if (args->nb_philos == args->all_eat)
+			{
+				args->done = 1;
+				pthread_mutex_unlock(&philos[i].eating);
+				return (0);
+			}
 		}
 		usleep(800);
-		if (args->nb_philos == args->all_eat)
-			args->done = 1;
 	}
 	return (0);
 }

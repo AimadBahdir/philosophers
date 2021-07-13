@@ -6,7 +6,7 @@
 /*   By: abahdir <abahdir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 08:02:23 by abahdir           #+#    #+#             */
-/*   Updated: 2021/07/12 14:56:21 by abahdir          ###   ########.fr       */
+/*   Updated: 2021/07/12 17:21:07 by abahdir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ typedef struct s_args
 	pthread_mutex_t	print;
 	pthread_mutex_t	calc;
 	pthread_mutex_t	free;
-	size_t			nb_philos;
-	size_t			nb_forks;
-	size_t			tt_die;
-	size_t			tt_eat;
-	size_t			tt_sleep;
-	size_t			nb_eat;
-	size_t			all_eat;
+	int				nb_philos;
+	int				nb_forks;
+	int				tt_die;
+	int				tt_eat;
+	int				tt_sleep;
+	int				nb_eat;
+	int				all_eat;
 	short			done;
 	long			time_start;
 }				t_args;
 
 typedef struct s_philo
 {
-	size_t			id;
+	int				id;
 	pthread_t		th;
-	size_t			nb_eat;
+	int				nb_eat;
 	int				last_eat;
 	short			lfork;
 	short			rfork;
@@ -63,7 +63,7 @@ void	ft_eating(t_philo *philo);
 void	ft_print_stat(short stat, t_philo *philo);
 short	ft_check_die(t_philo *philos, t_args *args);
 long	get_time(void);
-void	ft_pause(size_t time);
+void	ft_pause(long time);
 short	ft_died(t_philo *philo);
 int		refree(t_philo *philos, t_args *args, int ret);
 
